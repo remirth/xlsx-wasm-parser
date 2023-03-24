@@ -17,5 +17,9 @@
   "devDependencies": {
     "@preconstruct/cli": "^2.4.0",
     "typescript": "^5.0.2"
-  }
+  },
+  "files": [
+    "dist",
+    "wasm/dist"
+  ]
 }
