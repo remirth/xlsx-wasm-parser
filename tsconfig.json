@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "resolveJsonModule": true,
     "strict": true,
     "alwaysStrict": true,
     "noUncheckedIndexedAccess": true,
@@ -20,17 +19,17 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
     "outDir": "./dist",
-    "sourceMap": true,
-    "declaration": false,
-    "module": "ES2022",
+    "sourceMap": false,
+    "declaration": true,
+    "module": "CommonJS",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "experimentalDecorators": true,
+    "isolatedModules": true,
     "importHelpers": true,
-    "target": "ES2022",
     "typeRoots": ["node_modules/@types"],
     "lib": ["ES2022", "dom"],
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts"],
-  "exclude": ["src/**/*.environment.ts", "src/**/*.mjs"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts"]
 }

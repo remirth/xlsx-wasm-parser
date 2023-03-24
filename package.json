@@ -1,12 +1,12 @@
 {
   "name": "xlsx-wasm-parser",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A wasm layer of the rust Calamine crate in order to parse XLSX-files fast.",
   "module": "dist/xlsx-wasm-parser.esm.js",
   "main": "dist/xlsx-wasm-parser.cjs.js",
   "scripts": {
-    "build": "npm run build:wasm:node && npm run build:wasm:browser && npm run build:js",
-    "build:js": "preconstruct build",
+    "build:wasm": "npm run build:wasm:node && npm run build:wasm:browser",
+    "build": "preconstruct build",
     "build:wasm:node": "wasm-pack build --target nodejs  --out-dir ./dist/node ./wasm",
     "build:wasm:browser": "wasm-pack build --out-dir ./dist/release ./wasm",
     "release": "npm run release:wasm:node && npm run release:wasm:browser",
@@ -21,12 +21,14 @@
   "author": "exsjabe",
   "license": "ISC",
   "dependencies": {
-    "zod": "^3.21.4",
+    "xlsx-wasm-browser": "https://github.com/exsjabe/xlsx-wasm-browser.git",
     "xlsx-wasm-node": "https://github.com/exsjabe/xlsx-wasm-node.git",
-    "xlsx-wasm-browser": "https://github.com/exsjabe/xlsx-wasm-browser.git"
+    "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "@babel/preset-flow": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
     "@preconstruct/cli": "^2.4.0",
     "@vitest/coverage-c8": "^0.29.7",
     "jsdom": "^21.1.1",
