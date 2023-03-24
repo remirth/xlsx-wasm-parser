@@ -1,5 +1,5 @@
-import { get_all_rows } from "wasm";
-import type { Cell } from "./types";
+import { get_all_rows } from "wasm-node";
+import type { Cell } from "../types";
 
 export function getAllRows(bytes: Uint8Array | ArrayBuffer): Cell[][] {
   if (bytes instanceof Uint8Array) {

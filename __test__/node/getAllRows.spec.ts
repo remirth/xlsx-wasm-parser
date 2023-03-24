@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getAllRows } from "../../src";
+import { getAllRows } from "../../src/node";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { sheetSchema, testRowSchema } from "../test_utils/zod";

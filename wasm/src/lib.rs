@@ -21,8 +21,8 @@ extern "C" {
 
 }
 
-#[wasm_bindgen(catch)]
-pub fn get_all_rows(bytes: &[u8]) -> Result<Sheet, JsError> {
+#[wasm_bindgen]
+pub fn get_all_rows(bytes: &[u8]) -> Result<Sheet, JsValue> {
     set_panic_hook();
     let mut workbook = open_workbook_from_u8(bytes)?;
     let mut result: SheetResult = SheetResult { rows: vec![] };
@@ -38,8 +38,8 @@ pub fn get_all_rows(bytes: &[u8]) -> Result<Sheet, JsError> {
     Ok(to_value(&result)?.unchecked_into::<Sheet>())
 }
 
-#[wasm_bindgen(catch)]
-pub fn get_parsed_rows(bytes: &[u8], schema: JsRowSchema) -> Result<ParsedSheet, JsError> {
+#[wasm_bindgen]
+pub fn get_parsed_rows(bytes: &[u8], schema: JsRowSchema) -> Result<ParsedSheet, JsValue> {
     set_panic_hook();
     let row_schema = from_value::<HashMap<usize, String>>(schema.into())?;
     let mut map: HashMap<String, RowValue> = HashMap::new();

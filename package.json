@@ -13,7 +13,8 @@
     "test:wasm": "wasm-pack test --node ./wasm",
     "test:node": "vitest run",
     "coverage": "vitest run --coverage",
-    "coverage:show": "start coverage/index.html"
+    "coverage:show": "start coverage/index.html",
+    "postinstall": "npx preconstruct dev"
   },
   "author": "exsjabe",
   "license": "ISC",
@@ -31,6 +32,14 @@
   },
   "files": [
     "dist",
+    "node",
     "wasm/dist"
-  ]
+  ],
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "node/index.ts"
+    ]
+  },
+  "sideEffects": false
 }
