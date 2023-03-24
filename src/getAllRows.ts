@@ -1,10 +1,12 @@
 import { get_all_rows } from "wasm-node";
 import { Cell } from "./types";
 
-export default function getAllRows(bytes: Uint8Array | ArrayBuffer): Cell[][] {
+export function getAllRows(bytes: Uint8Array | ArrayBuffer): Cell[][] {
   if (bytes instanceof Uint8Array) {
     return get_all_rows(bytes);
   }
 
   return get_all_rows(new Uint8Array(bytes));
 }
+
+export default getAllRows;

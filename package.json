@@ -9,8 +9,10 @@
     "build:js": "preconstruct build",
     "build:wasm:node": "wasm-pack build --target nodejs  --out-dir ./dist/node ./wasm",
     "build:wasm:browser": "wasm-pack build --out-dir ./dist ./wasm",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:wasm": "wasm-pack test --node ./wasm"
+    "test": "npm run test:node",
+    "test:wasm": "wasm-pack test --node ./wasm",
+    "test:node": "vitest run -c ./vitest.config.ts --coverage",
+    "coverage:show": "start coverage/index.html"
   },
   "author": "exsjabe",
   "license": "ISC",
@@ -21,7 +23,9 @@
   "devDependencies": {
     "@babel/preset-flow": "^7.18.6",
     "@preconstruct/cli": "^2.4.0",
-    "typescript": "^5.0.2"
+    "@vitest/coverage-c8": "^0.29.7",
+    "typescript": "^5.0.2",
+    "vitest": "^0.29.7"
   },
   "files": [
     "dist",
