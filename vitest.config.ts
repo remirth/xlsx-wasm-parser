@@ -4,7 +4,7 @@ export default defineConfig({
   test: {
     dir: "__test__",
     coverage: {
-      exclude: ["**/node_modules/**", "**/wasm/**"],
+      exclude: ["**/node_modules/**", "**/wasm/**", "**/__test__/**"],
     },
   },
 });

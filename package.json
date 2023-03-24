@@ -11,14 +11,16 @@
     "build:wasm:browser": "wasm-pack build --out-dir ./dist ./wasm",
     "test": "npm run test:node",
     "test:wasm": "wasm-pack test --node ./wasm",
-    "test:node": "vitest run -c ./vitest.config.ts --coverage",
+    "test:node": "vitest run",
+    "coverage": "vitest run --coverage",
     "coverage:show": "start coverage/index.html"
   },
   "author": "exsjabe",
   "license": "ISC",
   "dependencies": {
     "wasm": "file:wasm/dist",
-    "wasm-node": "file:wasm/dist/node"
+    "wasm-node": "file:wasm/dist/node",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@babel/preset-flow": "^7.18.6",
