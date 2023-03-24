@@ -1,0 +1,21 @@
+{
+  "name": "xlsx-wasm-parser",
+  "version": "0.0.1",
+  "description": "A wasm layer of the rust Calamine crate in order to parse XLSX-files fast.",
+  "module": "dist/xlsx-wasm-parser.esm.js",
+  "main": "dist/xlsx-wasm-parser.cjs.js",
+  "scripts": {
+    "build": "npm run build:wasm:node && npm run build:wasm:browser && npm run build:js",
+    "build:js": "preconstruct build",
+    "build:wasm:node": "wasm-pack build --target nodejs  --out-dir ./dist/node ./wasm",
+    "build:wasm:browser": "wasm-pack build --out-dir ./dist ./wasm",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:wasm": "wasm-pack test --node ./wasm"
+  },
+  "author": "exsjabe",
+  "license": "ISC",
+  "devDependencies": {
+    "@preconstruct/cli": "^2.4.0",
+    "typescript": "^5.0.2"
+  }
+}
