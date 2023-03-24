@@ -1,8 +1,8 @@
-use std::io::Cursor;
+use std::{collections::HashMap, io::Cursor};
 
 use calamine::{open_workbook_from_rs, DataType, Xlsx};
 use chrono::Utc;
-use serde::{Deserialize, Serialize};
+use serde::{ser::SerializeSeq, Deserialize, Serialize, Serializer};
 use wasm_bindgen::JsError;
 
 pub fn set_panic_hook() {
@@ -51,5 +51,43 @@ impl From<&DataType> for RowValue {
             DataType::DateTime(_) => RowValue::String(convert_to_date(cell)),
             _ => RowValue::Undefined,
         }
+    }
+}
+
+pub struct ParsedRowResult {
+    rows: Vec<HashMap<String, RowValue>>,
+}
+
+impl Serialize for ParsedRowResult {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let mut seq = serializer.serialize_seq(Some(self.rows.len()))?;
+
+        for row in &self.rows {
+            seq.serialize_element(row)?;
+        }
+
+        seq.end()
+    }
+}
+
+pub struct SheetResult {
+    pub rows: Vec<Vec<RowValue>>,
+}
+
+impl Serialize for SheetResult {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let mut seq = serializer.serialize_seq(Some(self.rows.len()))?;
+
+        for row in &self.rows {
+            seq.serialize_element(row)?;
+        }
+
+        seq.end()
     }
 }

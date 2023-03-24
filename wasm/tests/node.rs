@@ -4,6 +4,9 @@
 #[path = "../src/utils.rs"]
 mod utils;
 
+#[path = "../src/lib.rs"]
+mod lib;
+
 extern crate wasm_bindgen_test;
 use wasm_bindgen_test::*;
 
@@ -50,16 +53,9 @@ fn datatype_date_to_rowvalue() {
     assert_eq!(row_value, control_value);
 }
 
+#[wasm_bindgen_test]
 fn datatype_empty_to_rowvalue() {
     let cell = calamine::DataType::Empty;
-    let control_value = utils::RowValue::Undefined;
-
-    let row_value = utils::RowValue::from(&cell);
-    assert_eq!(row_value, control_value);
-}
-
-fn datatype_error_to_rowvalue() {
-    let cell = calamine::DataType::Error;
     let control_value = utils::RowValue::Undefined;
 
     let row_value = utils::RowValue::from(&cell);
