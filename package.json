@@ -14,7 +14,12 @@
   },
   "author": "exsjabe",
   "license": "ISC",
+  "dependencies": {
+    "wasm": "file:wasm/dist",
+    "wasm-node": "file:wasm/dist/node"
+  },
   "devDependencies": {
+    "@babel/preset-flow": "^7.18.6",
     "@preconstruct/cli": "^2.4.0",
     "typescript": "^5.0.2"
   },
