@@ -1,6 +1,6 @@
 {
   "name": "xlsx-wasm-parser",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "description": "A wasm layer of the rust Calamine crate in order to parse XLSX-files fast.",
   "module": "dist/xlsx-wasm-parser.esm.js",
   "main": "dist/xlsx-wasm-parser.cjs.js",
@@ -8,11 +8,10 @@
     "build": "npm run build:wasm:node && npm run build:wasm:browser && npm run build:js",
     "build:js": "preconstruct build",
     "build:wasm:node": "wasm-pack build --target nodejs  --out-dir ./dist/node ./wasm",
-    "build:wasm:browser": "wasm-pack build --out-dir ./dist ./wasm",
-    "release": "npm run release:wasm:node && npm run release:wasm:browser && npm run release:js",
-    "release:js": "preconstruct build --release",
+    "build:wasm:browser": "wasm-pack build --out-dir ./dist/release ./wasm",
+    "release": "npm run release:wasm:node && npm run release:wasm:browser",
     "release:wasm:node": "wasm-pack build --target nodejs --release --out-dir ./dist/node ./wasm",
-    "release:wasm:browser": "wasm-pack build --release --out-dir ./dist ./wasm",
+    "release:wasm:browser": "wasm-pack build --release --out-dir ./dist/browser ./wasm",
     "test": "npm run test:node",
     "test:wasm": "wasm-pack test --node ./wasm",
     "test:node": "vitest run",
@@ -22,9 +21,9 @@
   "author": "exsjabe",
   "license": "ISC",
   "dependencies": {
-    "wasm": "file:wasm/dist/wasm.js",
-    "wasm-node": "file:wasm/dist/node/wasm.js",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "xlsx-wasm-node": "https://github.com/exsjabe/xlsx-wasm-node.git",
+    "xlsx-wasm-browser": "https://github.com/exsjabe/xlsx-wasm-browser.git"
   },
   "devDependencies": {
     "@babel/preset-flow": "^7.18.6",
@@ -34,16 +33,18 @@
     "typescript": "^5.0.2",
     "vitest": "^0.29.7"
   },
-  "files": [
-    "dist",
-    "node",
-    "wasm/dist"
-  ],
   "preconstruct": {
     "entrypoints": [
       "index.ts",
       "node/index.ts"
     ]
   },
-  "sideEffects": false
+  "files": [
+    "dist",
+    "node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exsjabe/xlsx-wasm-parser"
+  }
 }

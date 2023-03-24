@@ -1,4 +1,4 @@
-import { get_all_rows } from "wasm-node";
+import { get_all_rows } from "xlsx-wasm-node";
 import type { Cell } from "../types";
 
 export function getAllRows(bytes: Uint8Array | ArrayBuffer): Cell[][] {
