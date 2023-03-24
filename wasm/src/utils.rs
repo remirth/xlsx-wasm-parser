@@ -54,11 +54,11 @@ impl From<&DataType> for RowValue {
     }
 }
 
-pub struct ParsedRowResult {
-    rows: Vec<HashMap<String, RowValue>>,
+pub struct ParsedSheetResult {
+    pub rows: Vec<HashMap<String, RowValue>>,
 }
 
-impl Serialize for ParsedRowResult {
+impl Serialize for ParsedSheetResult {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
