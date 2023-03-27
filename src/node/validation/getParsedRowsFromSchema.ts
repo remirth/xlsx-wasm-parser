@@ -1,6 +1,6 @@
 import { XlsxSchema } from "../../types";
 import { parseInputToBytes } from "../../lib/parseInputToBytes";
-import { buildRowValidater } from "../../lib/validationHelpers";
+import { buildZodReducer } from "../../lib/validationHelpers";
 import { get_parsed_rows } from "xlsx-wasm-node";
 import type { ZodTypeAny, infer as ZodInfer } from "zod";
 /**
@@ -17,8 +17,8 @@ export function getParsedRowsWithZodSchema<TSchema extends ZodTypeAny>(
   schema: XlsxSchema,
   zodSchema: TSchema
 ): ZodInfer<TSchema>[] {
-  return buildRowValidater(zodSchema)(
-    get_parsed_rows(parseInputToBytes(bytes), schema),
+  return get_parsed_rows(parseInputToBytes(bytes), schema).reduce(
+    buildZodReducer(zodSchema),
     []
   );
 }
