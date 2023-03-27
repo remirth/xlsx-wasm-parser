@@ -1,12 +1,14 @@
 import { get_all_rows } from "xlsx-wasm-browser";
 import type { Cell } from "./types";
+import { parseByteInput } from "./lib/parseByteInput";
 
+/**
+ * @description Gets all rows from the given XLSX-file and returns them as a 2D array.
+ * @param {Uint8Array | ArrayBuffer}bytes - The XLSX-file to parse
+ * @returns {Cell[][]} An array of rows, where each row is an array of cells
+ */
 export function getAllRows(bytes: Uint8Array | ArrayBuffer): Cell[][] {
-  if (bytes instanceof Uint8Array) {
-    return get_all_rows(bytes);
-  }
-
-  return get_all_rows(new Uint8Array(bytes));
+  return getAllRows(parseByteInput(bytes));
 }
 
 export default getAllRows;

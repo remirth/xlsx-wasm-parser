@@ -3,5 +3,9 @@
     "@babel/preset-flow",
     "@babel/preset-env",
     "@babel/preset-typescript"
-  ]
+  ],
+  "targets": {
+    "node": "current",
+    "esmodules": true
+  }
 }

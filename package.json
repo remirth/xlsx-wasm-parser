@@ -32,6 +32,7 @@
     "@preconstruct/cli": "^2.4.0",
     "@vitest/coverage-c8": "^0.29.7",
     "jsdom": "^21.1.1",
+    "tslib": "^2.5.0",
     "typescript": "^5.0.2",
     "vitest": "^0.29.7"
   },
