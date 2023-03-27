@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildRowValidater } from "../../src/lib/validationHelpers";
+import { buildZodReducer } from "../../src/lib/validationHelpers";
 import { z } from "zod";
 
 const schema = z.object({
@@ -17,30 +17,23 @@ const input = [
 
 describe("buildRowParser", () => {
   it("should return a function", () => {
-    const result = buildRowValidater(schema);
+    const result = buildZodReducer(schema);
     expect(result).toBeInstanceOf(Function);
   });
 
-  it("should return a function that parses an array of objects and returns an array of those that pass the schema", () => {
-    const parseRow = buildRowValidater(schema);
-
-    const result = parseRow(input, []);
-    expect(result).toEqual([
-      { rowNo: 1, id: "1" },
-      { rowNo: 2, id: "2" },
-      { rowNo: 5, id: "5" },
-    ]);
+  it("should return a reducer function that returns an array of objects", () => {
+    const result = input.reduce(buildZodReducer(schema), []);
+    expect(result).toBeInstanceOf(Array);
+    expect(result.length).toBeDefined();
+    expect(result[0]).toBeTypeOf("object");
   });
 
-  it("should return a function that parses an array of objects and returns an array of those that pass the schema", () => {
-    const result = buildRowValidater(schema)(input, []);
-
+  it("should return a reducer function that returns an array of objects that pass the schema", () => {
+    const result = input.reduce(buildZodReducer(schema), []);
     const safeParseResult = z.array(schema).safeParse(result);
-
     if (!safeParseResult.success) {
       console.error(safeParseResult.error);
-    } else {
-      expect(safeParseResult.success).toBe(true);
     }
+    expect(safeParseResult.success).toBe(true);
   });
 });

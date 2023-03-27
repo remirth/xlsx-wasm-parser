@@ -7,6 +7,9 @@ import { getParsedRowsWithZodSchema } from "../../src/node/validation/getParsedR
 import { testParsingSchema } from "../testutils/zod";
 
 const testFile = readFileSync(join("__test__", "testData", "zodTestfile.xlsx"));
+const largeTestfile = readFileSync(
+  join("__test__", "testData", "file100000.xlsx")
+);
 
 describe("getParsedRowsWithZodSchema", () => {
   it("should exists", () => {
@@ -35,6 +38,19 @@ describe("getParsedRowsWithZodSchema", () => {
       console.error(safeParseResult.error);
     }
 
+    expect(safeParseResult.success).toBe(true);
+  });
+
+  it("should return an array of objects that pass the schema with a large file", () => {
+    const result = getParsedRowsWithZodSchema(
+      largeTestfile,
+      testSchema,
+      testParsingSchema
+    );
+    const safeParseResult = z.array(testParsingSchema).safeParse(result);
+    if (!safeParseResult.success) {
+      console.error(safeParseResult.error);
+    }
     expect(safeParseResult.success).toBe(true);
   });
 });
