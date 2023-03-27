@@ -1,6 +1,6 @@
 import { get_parsed_rows } from "xlsx-wasm-browser";
-import type { Cell } from "./types";
-import { parseByteInput } from "./lib/parseByteInput";
+import type { Cell, XlsxSchema } from "./types";
+import { parseInputToBytes } from "./lib/parseInputToBytes";
 
 /**
  * @description Parses the given XLSX-file to an array of Rows,
@@ -14,7 +14,7 @@ import { parseByteInput } from "./lib/parseByteInput";
  */
 export function getParsedRows(
   bytes: Uint8Array | ArrayBuffer,
-  schema: [number, string][]
+  schema: XlsxSchema
 ): Record<string, Cell>[] {
-  return get_parsed_rows(parseByteInput(bytes), schema);
+  return get_parsed_rows(parseInputToBytes(bytes), schema);
 }

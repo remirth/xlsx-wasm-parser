@@ -4,7 +4,7 @@
  * @param bytes The input to parse
  * @returns The parsed input
  */
-export function parseByteInput(bytes: Uint8Array | ArrayBuffer): Uint8Array {
+export function parseInputToBytes(bytes: Uint8Array | ArrayBuffer): Uint8Array {
   if (bytes instanceof Uint8Array) {
     return bytes;
   }

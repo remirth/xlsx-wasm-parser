@@ -2,11 +2,11 @@ import { describe, it, expect } from "vitest";
 import { getAllRows } from "../../src/node";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { sheetSchema, testRowSchema } from "../test_utils/zod";
+import { sheetSchema, testRowSchema } from "../testutils/zod";
 
 import { z } from "zod";
 
-const testFile = readFileSync(join("__test__", "test_data", "file10.xlsx"));
+const testFile = readFileSync(join("__test__", "testData", "file10.xlsx"));
 describe("getAllRows", () => {
   it("should return a 2d array of cells", () => {
     const rows = getAllRows(testFile);

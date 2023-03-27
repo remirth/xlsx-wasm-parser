@@ -21,3 +21,12 @@ export const testRowSchema = z.tuple([
   z.number(),
   z.string(),
 ]);
+
+export const testParsingSchema = z.object({
+  rowNo: z.number(),
+  id: z.string(),
+  startDate: z.coerce.date(),
+  endDate: z.coerce.date(),
+  amount: z.number(),
+  description: z.string(),
+});
