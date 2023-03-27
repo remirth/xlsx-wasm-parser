@@ -7,11 +7,12 @@
   "scripts": {
     "build:wasm": "npm run build:wasm:node && npm run build:wasm:browser",
     "build": "preconstruct build",
-    "build:wasm:node": "wasm-pack build --target nodejs  --out-dir ./dist/node ./wasm",
-    "build:wasm:browser": "wasm-pack build --out-dir ./dist/release ./wasm",
+    "build:wasm:node": "node scripts/buildWasm.mjs --node",
+    "build:wasm:browser": "node scripts/buildWasm.mjs",
     "release": "npm run release:wasm:node && npm run release:wasm:browser",
-    "release:wasm:node": "wasm-pack build --target nodejs --release --out-dir ./dist/node ./wasm",
-    "release:wasm:browser": "wasm-pack build --release --out-dir ./dist/browser ./wasm",
+    "release:wasm:node": "node scripts/buildWasm.mjs --release --node",
+    "release:wasm:browser": "node scripts/buildWasm.mjs --release",
+    "postinstall": "npm i xlsx-wasm-browser xlsx-wasm-node",
     "test": "npm run test:node",
     "test:wasm": "wasm-pack test --node ./wasm",
     "test:node": "vitest run",
@@ -21,8 +22,8 @@
   "author": "exsjabe",
   "license": "ISC",
   "dependencies": {
-    "xlsx-wasm-browser": "https://github.com/exsjabe/xlsx-wasm-browser.git",
-    "xlsx-wasm-node": "https://github.com/exsjabe/xlsx-wasm-node.git",
+    "xlsx-wasm-browser": "github:exsjabe/xlsx-wasm-browser",
+    "xlsx-wasm-node": "github:exsjabe/xlsx-wasm-node",
     "zod": "^3.21.4"
   },
   "devDependencies": {
@@ -39,12 +40,14 @@
   "preconstruct": {
     "entrypoints": [
       "index.ts",
-      "node/index.ts"
+      "node/index.ts",
+      "node/zod/index.ts"
     ]
   },
   "files": [
     "dist",
-    "node"
+    "node",
+    "node/zod"
   ],
   "repository": {
     "type": "git",
