@@ -5,3 +5,4 @@ node/package.json
 validation/package.json
 *.tgz
 ~$*
+test-results

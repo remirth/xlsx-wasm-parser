@@ -1,3 +1,4 @@
+import { join } from "path";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -10,5 +11,10 @@ export default defineConfig({
     coverage: {
       exclude: ["**/node_modules/**", "**/wasm/**", "**/__test__/**"],
     },
+    reporters: "junit",
+    outputFile: join(
+      "test-results",
+      `${process.env["VITEST_JUNIT_SUITE_NAME"] ?? "junit-results"}.xml`
+    ),
   },
 });
