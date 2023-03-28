@@ -30,6 +30,37 @@ This project is still in it's early stages, and only implements the bare essenti
 npm install xlsx-wasm-parser
 ```
 
+### Set-up with Webpack
+
+We need to enable experimental WASM support in Webpack. To do this, add the following to your Webpack config:
+
+```ts
+// webpack.config.js
+module.exports = {
+  //...
+  experiments: {
+    ...,
+    asyncWebAssembly: true,
+    topLevelAwait: true,
+  },
+};
+```
+
+### Set-up with NextJS
+
+For NextJS we need to enable WASM-support in the Webpack-bundler, which can be done by adding the following to your `next.config.js`-file
+
+```js
+const config = {
+  ...
+  webpack: (config) => {
+    // enable webassembly
+    config.experiments = { ...config.experiments, asyncWebAssembly: true, topLevelAwait: true };
+    return config;
+  },
+};
+```
+
 ### ⚡ Set-up with Vite
 
 Vite requires the <a href="https://github.com/Menci/vite-plugin-wasm">vite-plugin-wasm</a> to run WebAssembly, which in turn requires the <a href="https://github.com/Menci/vite-plugin-top-level-await">vite-plugin-top-level-await</a> plugin. To use this library with Vite, you must install both of these plugins and add them to your Vite config.
@@ -46,6 +77,17 @@ import topLevelAwait from "vite-plugin-top-level-await";
 export default defineConfig({
   plugins: [wasm(), topLevelAwait()],
 });
+```
+
+### SSR & SSG
+
+Since the code might run on both the server and the client, we need to dynamically import the library based on the environment. This can be done by using the following code:
+
+```ts
+const { getAllRows } =
+  typeof window === "undefined"
+    ? await import("xlsx-wasm-parser/node")
+    : await import("xlsx-wasm-parser");
 ```
 
 ### 🌐 Usage in the browser
@@ -98,7 +140,7 @@ input.addEventListener("change", () => {
 });
 ```
 
-To use the validation feature, import the `getParsedRowsWithZodSchema` function from the `validation` entry point.
+To use the validation feature, import the `getParsedRowsWithZodSchema` function from the `validation` entry-point.
 
 #### With Zod Validation
 
@@ -131,7 +173,7 @@ input.addEventListener("change", () => {
 
 ### 📦 Usage in Node
 
-To use the Node version of this package, import it from the Node entry point.
+To use the Node version of this package, import it from the Node entry-point.
 
 #### Getting all rows
 
@@ -158,7 +200,7 @@ const rows = getParsedRows(fs.readFileSync("file.xlsx"), xlsxSchema);
 // Rows is a list of objects based on the schema
 ```
 
-To use the validation feature for Node, import the `getParsedRowsWithZodSchema` function from the `node/validation` entry point.
+To use the validation feature for Node, import the `getParsedRowsWithZodSchema` function from the `node/validation` entry-point.
 
 #### With Zod Validation
 
