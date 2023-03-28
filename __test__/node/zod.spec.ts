@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { testSchema } from "../testutils/schemas";
+import { testSchema } from "../testUtils/schemas";
 import { z } from "zod";
 import { getParsedRowsWithZodSchema } from "../../src/node/validation/getParsedRowsFromSchema";
-import { testParsingSchema } from "../testutils/zod";
+import { testParsingSchema } from "../testUtils/zod";
 
 const testFile = readFileSync(join("__test__", "testData", "zodTestfile.xlsx"));
 const largeTestfile = readFileSync(

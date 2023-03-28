@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getParsedRows } from "../../src/node/getParsedRows";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { testSchema } from "../testutils/schemas";
+import { testSchema } from "../testUtils/schemas";
 
 const testFile = readFileSync(join("__test__", "testData", "file10.xlsx"));
 
