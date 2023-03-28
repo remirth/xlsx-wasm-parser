@@ -1,6 +1,6 @@
 {
   "name": "xlsx-wasm-parser",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A wasm layer of the rust Calamine crate in order to parse XLSX-files fast.",
   "module": "dist/xlsx-wasm-parser.esm.js",
   "main": "dist/xlsx-wasm-parser.cjs.js",
@@ -20,7 +20,7 @@
     "coverage:show": "start coverage/index.html"
   },
   "author": "exsjabe",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "xlsx-wasm-browser": "github:exsjabe/xlsx-wasm-browser#e88ef46",
     "xlsx-wasm-node": "github:exsjabe/xlsx-wasm-node#01b8f40",

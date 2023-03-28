@@ -2,7 +2,7 @@
 
   <h1><code>XLSX-Wasm-Parser</code></h1>
 
-<strong>A WebAssembly wrapper over the Rust <a href="https://lib.rs/crates/calamine">Calamine</a> crate, bringing Blazingly Fast (🔥) XLSX deserialization to the browser and Node.</strong>
+<strong>A WebAssembly wrapper over the Rust <a href="https://lib.rs/crates/calamine">Calamine</a> crate, bringing Blazingly Fast (🔥) XLSX deserialization for Excel-files to both the browser and NodeJS.</strong>
 
   <p>
     <a href="https://www.codefactor.io/repository/github/exsjabe/xlsx-wasm-parser">
