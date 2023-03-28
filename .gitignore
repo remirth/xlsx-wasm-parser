@@ -6,3 +6,4 @@ validation/package.json
 *.tgz
 ~$*
 test-results
+node/validation/package.json
