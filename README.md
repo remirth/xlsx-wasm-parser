@@ -9,6 +9,7 @@
       <img src="https://www.codefactor.io/repository/github/exsjabe/xlsx-wasm-parser/badge" alt="CodeFactor" />
     </a>
     <img alt="GitHub" src="https://img.shields.io/github/license/exsjabe/xlsx-wasm-parser"/>
+    <img alt="AppVeyor tests" src="https://img.shields.io/appveyor/tests/exsjabe/xlsx-wasm-parser">
   </p>
 
 </div>
