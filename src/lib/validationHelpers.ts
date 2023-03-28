@@ -14,8 +14,8 @@ export function buildZodReducer<
   };
 }
 
-const handleParseResult = <TSchema extends ZodTypeAny>(
-  result: SafeParseReturnType<any, any>,
+const handleParseResult = <TSchema extends ZodTypeAny, TIn, TOut>(
+  result: SafeParseReturnType<TIn, TOut>,
   acc: zodInfer<TSchema>[]
 ) => {
   if (result.success) {

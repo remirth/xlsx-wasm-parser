@@ -1,6 +1,6 @@
 {
   "name": "xlsx-wasm-parser",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A wasm layer of the rust Calamine crate in order to parse XLSX-files fast.",
   "module": "dist/xlsx-wasm-parser.esm.js",
   "main": "dist/xlsx-wasm-parser.cjs.js",

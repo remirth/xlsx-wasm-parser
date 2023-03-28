@@ -3,8 +3,6 @@ import { getParsedRows } from "../../src/node/getParsedRows";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { testSchema } from "../testutils/schemas";
-import { testParsingSchema } from "../testutils/zod";
-import { z } from "zod";
 
 const testFile = readFileSync(join("__test__", "testData", "file10.xlsx"));
 
@@ -24,7 +22,7 @@ describe("getParsedRows", () => {
     const result = getParsedRows(testFile, testSchema);
     const keys = Object.keys(result[0]);
     expect(keys).toEqual(
-      expect.arrayContaining(testSchema.map(([_, key]) => key))
+      expect.arrayContaining(testSchema.map((tuple) => tuple[1]))
     );
   });
 });

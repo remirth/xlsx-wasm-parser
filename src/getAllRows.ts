@@ -8,7 +8,7 @@ import { parseInputToBytes } from "./lib/parseInputToBytes";
  * @returns {Cell[][]} An array of rows, where each row is an array of cells
  */
 export function getAllRows(bytes: Uint8Array | ArrayBuffer): Cell[][] {
-  return getAllRows(parseInputToBytes(bytes));
+  return get_all_rows(parseInputToBytes(bytes));
 }
 
 export default getAllRows;
