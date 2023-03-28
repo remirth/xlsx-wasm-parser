@@ -1,4 +1,0 @@
-{
-  "main": "dist/xlsx-wasm-parser-node-validation.cjs.js",
-  "module": "dist/xlsx-wasm-parser-node-validation.esm.js"
-}
