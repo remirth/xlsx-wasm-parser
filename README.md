@@ -102,7 +102,7 @@ input.addEventListener("change", () => {
   // Currently only supports sync operations and therefore requires inputs to be of type ArrayBuffer or a Uint8Array
   input.files?.[0]?
     .arrayBuffer()
-    .then(getAllRows)
+    .then((buf) => getAllRows(buf))
     .then((rows) => {
       // Rows is a 2d array of cells
     });
@@ -111,7 +111,7 @@ input.addEventListener("change", () => {
 // Fetch response
 fetch("https://example.com/file.xlsx")
   .then((response) => response.arrayBuffer())
-  .then(getAllRows)
+  .then((buf) => getAllRows(buf))
   .then((rows) => {
     // Rows is a 2d array of cells
   });
